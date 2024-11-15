@@ -11,6 +11,10 @@ import { Github, Globe, Linkedin } from 'lucide-react';
 import { DiscordLogoIcon } from "@radix-ui/react-icons";
 import { FaXTwitter } from "react-icons/fa6";
 
+import { searchMetadata } from '@/metadata/config';
+
+export const metadata = searchMetadata;
+
 interface Movie {
   imdbID: string; 
   Title: string;

@@ -4,6 +4,9 @@ import Image from 'next/image'
 import { ThemeSwitcher } from './components/ThemeSwitcher'
 import { DiscordLogoIcon } from "@radix-ui/react-icons";
 import { FaXTwitter } from "react-icons/fa6";
+import { homeMetadata } from '@/metadata/config';
+
+export const metadata = homeMetadata;
 
 export default function Home() {
 
