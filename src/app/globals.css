@@ -142,12 +142,6 @@ html, body, #__next, #root {
   padding: 0;
 }
 
-@font-face {
-  font-family: 'Impact';
-  src: url('/fonts/Impact.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
 
 .impactFont {
   font-family: 'Impact', sans-serif;

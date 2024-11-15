@@ -1,31 +1,23 @@
-'use client'
-
 import Link from 'next/link'
 import { Film, Github, Globe, Linkedin, Star, Tv } from 'lucide-react'
 import Image from 'next/image'
 import { ThemeSwitcher } from './components/ThemeSwitcher'
-import { useEffect, useState } from 'react'
+import { DiscordLogoIcon } from "@radix-ui/react-icons";
+import { FaXTwitter } from "react-icons/fa6";
 
 export default function Home() {
-    // const [theme, setTheme] = useState('corporate');
-    // useEffect(() => {
-    //     const savedTheme = localStorage.getItem('theme')
-    //     if (savedTheme) {
-    //       setTheme(savedTheme)
-    //       document.documentElement.setAttribute('data-theme', savedTheme)
-    //     }
-    //   }, [])
+
     return (
     <main>
         <div className="flex justify-between items-center">
-          <Link href="/" className="flex items-center">
+          <Link href="https://armour.dev" className="flex items-center">
 
                 <Image
                   src={"/ICON LOGO.png"}
                   alt="logo"
                   width={40}
                   height={40}
-                  className="max-w-full h-auto"
+                  className="max-w-full h-auto ml-5"
                 />
               
             </Link>
@@ -35,7 +27,6 @@ export default function Home() {
         </div>
 
         <div className="relative  w-full min-h-screen flex items-center justify-center  overflow-hidden">
-            {/* Background decorative elements */}
             <div className="absolute inset-0 overflow-hidden">
                 <div className="absolute left-1/4 top-1/4 transform -translate-x-3/4 -translate-y-3/4  opacity-20">
                 <Film size={300} />
@@ -46,10 +37,7 @@ export default function Home() {
             </div>
 
             <div className="relative flex flex-col items-center justify-center text-center px-4 pt-6">
-                {/* <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fade-in-up">
-                    CINESCOPE
-                </h1> */}
-                <div className='-my-28 sm:-my-32 md:-my-44 lg:-my-52 xl:-my-56'>
+                <div className='-my-28 sm:-my-32 md:-my-44 lg:-my-52 xl:-my-56 ml-5'>
                 <Image
                   src={"/cinescope.png"}
                   alt="logo"
@@ -86,22 +74,17 @@ export default function Home() {
                     </Link>
                 </div>
                     <div className="flex justify-center mt-4 space-x-8 animate-fade-in-up animation-delay-400">
-                        <Link href="https://linkedin.com/in/brazy" className="flex items-center">
-                            <Linkedin className="" size={32} />
+                        <Link href="https://linkedin.com/in/brazy" className="flex items-center font-thin">
+                            <Linkedin className="font-thin" size={32} />
                         </Link>
                         <Link href="https://github.com/BrazyDevelopment" className="flex items-center">
                             <Github className="" size={32} />
                         </Link>
                         <Link href="https://armour-hosting.com" className="flex items-center">
-                            {/* <Globe className="" size={32} /> */}
-                            <Image
-                                src={"/VECTOR-BLACK-widebold.svg"}
-                                alt="logo"
-                                width={32}
-                                height={32}
-                            />
-
+                            <Globe className="" size={32} />
                         </Link>
+                        <Link href="https:/discord.gg/armour" className="flex items-center"><DiscordLogoIcon width={32} height={32} /></Link>
+        <Link href="https:/x.com/Armour_Hosting" className="flex items-center"><FaXTwitter size={32} /></Link>
                     </div>
                 </div>
         </div>

@@ -82,8 +82,8 @@ export function MovieDetails({ movie }: MovieDetailsProps) {
     // Use series poster if episode doesn't have one
     if (movie.Poster && movie.Poster !== "N/A") return movie.Poster;
     // Fallback to a placeholder or series poster if available in state or props
-    if (movie.seriesID) return `/api/image?i=${movie.seriesID}`; // Assuming you can fetch the series poster like this
-    return "/placeholder.png"; // Default placeholder image
+    if (movie.seriesID) return `/api/image?i=${movie.seriesID}`;
+    return "/PLACEHOLDER.png";
   };
 
   if (movie.Type === "episode") {
@@ -123,24 +123,24 @@ export function MovieDetails({ movie }: MovieDetailsProps) {
     <div className="card bg-base-100 shadow-xl">
       <figure className="px-10 pt-10">
         <Image
-          src={movie.Poster && movie.Poster !== "N/A" ? movie.Poster : "/placeholder.png"}
+          src={movie.Poster && movie.Poster !== "N/A" ? movie.Poster : "/PLACEHOLDER.png"}
           alt={movie.Title}
           width={300}
           height={445}
           className="rounded-xl"
         />
       </figure>
-      <div className="card-body items-center text-center">
+      <div className="card-body items-center space-y-4 text-center">
         <h2 className="card-title">{movie.Title}</h2>
         <div className="flex items-center space-x-4 text-sm">
           <div className="flex items-center">
             <Calendar className="w-4 h-4 mr-1" />
             <span>{movie.Year}</span>
           </div>
-          <div className="flex items-center">
+          {/* <div className="flex items-center">
             <Clock className="w-4 h-4 mr-1" />
             <span>{movie.Runtime}</span>
-          </div>
+          </div> */}
         </div>
         {/* <p>{movie.Type === "episode" ? `S${movie.Season} E${movie.Episode}` : `${movie.Type} - ${movie.Year}`}</p> */}
         <div className="card-actions">
@@ -158,7 +158,7 @@ function MovieDetailsModal({ isOpen, onClose, details }: { isOpen: boolean, onCl
   const StarRating = ({ rating }: { rating: string }) => {
     const numStars = Math.round(parseFloat(rating) / 2)
     return (
-      <div className="flex items-center">
+      <div className="flex items-center justify-center text-center">
         {[...Array(5)].map((_, i) => (
           <Star key={i} className={`w-4 h-4 ${i < numStars ? 'fill-yellow-400' : ''}`} />
         ))}
@@ -169,10 +169,10 @@ function MovieDetailsModal({ isOpen, onClose, details }: { isOpen: boolean, onCl
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="flex flex-col items-center justify-center sm:max-w-[425px] bg-base-100">
+      <DialogContent className="flex flex-col items-center text-center justify-center sm:max-w-[425px] bg-base-100">
         <DialogHeader>
-          <DialogTitle>{details.Title}</DialogTitle>
-          <DialogDescription>
+          <DialogTitle className='text-center'>{details.Title}</DialogTitle>
+          <DialogDescription className='text-center items-center justify-items-center'>
             {details.Year} • {details.Runtime}
           </DialogDescription>
         </DialogHeader>
@@ -202,24 +202,24 @@ function MovieDetailsModal({ isOpen, onClose, details }: { isOpen: boolean, onCl
               </div>
             )}
             {details.Genre && (
-              <div>
-                <h4 className="text-sm font-medium mb-1">Genre</h4>
-                <div className="flex flex-wrap gap-2">
+              <div className='flex flex-col items-center justify-center text-center'>
+                <h4 className="text-sm font-medium mb-1">Genre(s)</h4>
+                <div className="flex flex-wrap gap-2 text-center items-center justify-items-center">
                   {details.Genre.split(', ').map((genre) => (
-                    <Badge key={genre} variant="secondary">{genre}</Badge>
+                    <Badge key={genre} variant="outline">{genre}</Badge>
                   ))}
                 </div>
               </div>
             )}
             {details.Director && (
               <div>
-                <h4 className="text-sm font-medium mb-1">Director</h4>
+                <h4 className="text-sm font-medium mb-1">Director(s)</h4>
                 <p className="text-sm">{details.Director}</p>
               </div>
             )}
             {details.Writer && (
               <div>
-                <h4 className="text-sm font-medium mb-1">Writer</h4>
+                <h4 className="text-sm font-medium mb-1">Writer(s)</h4>
                 <p className="text-sm">{details.Writer}</p>
               </div>
             )}
@@ -282,14 +282,14 @@ function EpisodeDetailsModal({ isOpen, onClose, details }: { isOpen: boolean, on
     // Use series poster if episode doesn't have one
     if (details.Poster && details.Poster !== "N/A") return details.Poster;
     // Fallback to a placeholder or series poster if available in state or props
-    if (details.seriesID) return `/api/image?i=${details.seriesID}`; // Assuming you can fetch the series poster like this
-    return "/placeholder.png"; // Default placeholder image
+    if (details.seriesID) return `/api/image?i=${details.seriesID}`;
+    return "/PLACEHOLDER.png"; 
   };
 
   const StarRating = ({ rating }: { rating: string }) => {
     const numStars = Math.round(parseFloat(rating) / 2)
     return (
-      <div className="flex items-center">
+      <div className="flex items-center text-center justify-center">
         {[...Array(5)].map((_, i) => (
           <Star key={i} className={`w-4 h-4 ${i < numStars ? 'fill-yellow-400' : ''}`} />
         ))}
@@ -300,15 +300,15 @@ function EpisodeDetailsModal({ isOpen, onClose, details }: { isOpen: boolean, on
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-[425px] bg-base-100">
+      <DialogContent className="flex flex-col items-center text-center justify-center sm:max-w-[425px] bg-base-100">
         <DialogHeader>
-          <DialogTitle>{details.Title}</DialogTitle>
+          <DialogTitle className='text-center'>{details.Title}</DialogTitle>
           <DialogDescription>
             Season {details.Season}, Episode {details.Episode}
           </DialogDescription>
         </DialogHeader>
         <ScrollArea className="h-[60vh]">
-        <div className="flex justify-center mb-4">
+        <div className="flex text-center items-center justify-center mb-4">
             <Image
               src={getPosterImage()}
               alt={details.Title}
