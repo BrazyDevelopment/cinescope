@@ -25,7 +25,7 @@ export default function SearchPage() {
   const[movies, setMovies] = useState<Movie[]>([]);
   const[currentPage, setCurrentPage] = useState(1);
   const[query, setQuery] = useState("");
-  const[error, setError] = useState("");
+  // const[error, setError] = useState("");
   const[totalResults, setTotalResults] = useState(0);
   const[searchType, setSearchType] = useState<string | undefined>(undefined);
   const[isLoading, setIsLoading] = useState(false);
@@ -64,15 +64,12 @@ export default function SearchPage() {
           setTotalResults(1);
         }
         setMovies(filteredMovies);
-        setError("");
+        // setError("");
       } else {
         setMovies([]);
-        setError(data.Error || "No results found.");
+        // setError(data.Error || "No results found.");
         setTotalResults(0);
       }
-    } catch (error) {
-      setError("Failed to fetch data.");
-      setTotalResults(0);
     } finally {
       setIsLoading(false);
     }
@@ -122,7 +119,7 @@ export default function SearchPage() {
       <SearchBar onSearch={handleSearch} />
       
       {isLoading && <div className="flex justify-center mt-8"><div className="loading loading-spinner loading-lg"></div></div>}
-      {error && <div className="alert alert-error mt-4">{error}</div>}
+      {/* {error && <div className="alert alert-error mt-4">{error}</div>} */}
       
       {!isLoading && movies.length > 0 && (
         <>

@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useContext } from 'react'
+import { useEffect, useContext } from 'react'
 import { Moon, Sun } from 'lucide-react'
 import { ThemeContext } from '../ThemeContext';
 
@@ -38,23 +38,25 @@ const themes = [
 
 export function ThemeSwitcher() {
   const { theme, setTheme } = useContext(ThemeContext) || {};
+  
+  useEffect(() => {
+    if (!theme) return;
+
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+  },[theme]);
+
+  useEffect(() => {
+    if (!setTheme) return;
+
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      setTheme(savedTheme);
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    }
+  }, []);
 
   if (!theme || !setTheme) return null;
-
-  useEffect(() => {
-    document.documentElement.setAttribute('data-theme', theme)
-    localStorage.setItem('theme', theme)
-  }, [theme])
-
-
-
-  useEffect(() => {
-    const savedTheme = localStorage.getItem('theme')
-    if (savedTheme) {
-      setTheme(savedTheme)
-      document.documentElement.setAttribute('data-theme', savedTheme)
-    }
-  }, [])
 
   return (
     <div className="dropdown dropdown-end z-50">

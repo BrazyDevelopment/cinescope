@@ -47,6 +47,8 @@ const BreadcrumbLink = React.forwardRef<
 >(({ asChild, className, href, ...props }, ref) => {
   const Comp = asChild ? Slot : "a"
 
+  console.log(Comp)
+
   return (
     <Link
       href={href || '#'}
