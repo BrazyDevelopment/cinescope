@@ -151,8 +151,8 @@ export default function SearchPage() {
         <Link href="https://linkedin.com/in/brazy" className="flex items-center"><Linkedin size={32} /></Link>
         <Link href="https://github.com/BrazyDevelopment" className="flex items-center"><Github size={32} /></Link>
         <Link href="https://armour-hosting.com" className="flex items-center"><Globe size={32} /></Link>
-        <Link href="https:/discord.gg/armour" className="flex items-center"><DiscordLogoIcon width={32} height={32} /></Link>
-        <Link href="https:/x.com/Armour_Hosting" className="flex items-center"><FaXTwitter size={32} /></Link>
+        <Link href="https://discord.gg/armour" className="flex items-center"><DiscordLogoIcon width={32} height={32} /></Link>
+        <Link href="https://x.com/Armour_Hosting" className="flex items-center"><FaXTwitter size={32} /></Link>
       </div>
     </div>
   );
